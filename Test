@@ -1,0 +1,40 @@
+1. textFilter 文本长度过滤器学过Vue的都知道怎么使用过滤器，导入，添加：filters: { textFilter }然后使用{text | textFilter}
+2. 首先使用表格组件
+    <s-table
+      :columns="columns"
+      :data-source="data"
+      :rowKey="(record,index) => index"
+    >
+     <span slot="hobbys" slot-scope="text,record,index"> ... </span>
+     <span slot="action" slot-scope="text,record,index"> ... </span>
+    </s-table>
+    ...
+    <script>
+    import { T } from '../common/MyDataHandle'
+    ...
+    data () {
+     return {
+        columns: [
+          T('序号', 'index'),
+          T('姓名', 'name'),
+          T('年龄', 'age'),
+          T('出生日期', 'age',false,{format:'YYYY-MM-DD'}),
+          T('爱好', 'hobbys', true),
+          T('介绍', 'introduce', fasle,{ellipses:10}),
+          T('操作', 'action')
+      ],
+      }
+   }
+如果你需要给table设置样式，只需要给table添加一个class即可，例如tableStyle，见下例
+<style scoped>
+  /*表头必填*/
+  .tableStyle >>> .requiredHeader::before{
+    display: inline-block;
+    margin-right: 4px;
+    color: #f5222d;
+    font-size: 14px;
+    font-family: SimSun, sans-serif;
+    line-height: 1;
+    content: '*';
+  }
+</style>
