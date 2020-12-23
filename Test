@@ -10,7 +10,7 @@
     </s-table>
     ...
     <script>
-    import { T } from '../common/MyDataHandle'
+    import { T } from './ColomnsHandle'
     ...
     data () {
      return {
